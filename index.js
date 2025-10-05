@@ -4,11 +4,13 @@ let submitButton = document.querySelector(".button");
 //
 let errorMessages = document.querySelectorAll(".error-message");
 let emptyfieldMessages = document.querySelectorAll(".empty-field");
+let showPasswordBtn = document.querySelector(".btn");
 
 //STORING THE VALUES INTO A VARIABLE
 let firstName, lastName, email, password;
 let fnTarget, lnTarget, emailTarget, pwdTarget;
 let field; // whee we store THE TARGET(input key)
+let fnFlag, lnFlag, eFlag, pwdFlag;
 
 //Regular expression For validation
 let nameRegex  = /^[a-z]+$/i;
@@ -59,9 +61,11 @@ submitButton.addEventListener("click", (event) => {
         if (!nameRegex.test(firstName)) {
             fnTarget.classList.add("error");
             errorMessages[0].classList.remove("d-none");
+            fnFlag = false;
         } else {
             fnTarget.classList.remove("error");
             errorMessages[1].classList.add("d-none");
+            fnFlag = true;
         }
     } else {
         emptyfieldMessages[0].classList.remove("d-none");
@@ -71,9 +75,11 @@ submitButton.addEventListener("click", (event) => {
         if (!nameRegex.test(lastName)) {
             lnTarget.classList.add("error");
             errorMessages[1].classList.remove("d-none");
+            lnFlag = false;
         } else {
             lnTarget.classList.remove("error");
-            errorMessages[1].classList.add("d-none")
+            errorMessages[1].classList.add("d-none");
+            lnFlag = true;
         }
     } else {
         emptyfieldMessages[1].classList.remove("d-none");
@@ -83,9 +89,11 @@ submitButton.addEventListener("click", (event) => {
         if(!emailRegex.test(email)) {
             emailTarget.classList.add("error");
             errorMessages[2].classList.remove("d-none");
+            eFlag = false;
         } else {
             emailTarget.classList.remove("error");
             errorMessages[2].classList.add("d-none");
+            eFlag = true;
         }
     } else {
         emptyfieldMessages[2].classList.remove("d-none");
@@ -95,11 +103,27 @@ submitButton.addEventListener("click", (event) => {
         if (!passwordRegex.test(password)) {
             pwdTarget.classList.add("error");
             errorMessages[3].classList.remove("d-none");
+            pwdFlag = false;
         } else {
              pwdTarget.classList.remove("error");
             errorMessages[3].classList.add("d-none");
+            pwdFlag = true;
         }
     } else {
         emptyfieldMessages[3].classList.remove("d-none");
     }
-})
+
+    if (fnFlag && lnFlag && eFlag && pwdFlag) {
+        window.location.href = "/success.html"
+    }
+});
+
+
+showPasswordBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    if (pwdTarget.getAttribute("type") === "text") {
+        pwdTarget.setAttribute("type", "password")
+    }else {
+        pwdTarget.setAttribute("type", "text")
+    }
+});
