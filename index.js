@@ -27,3 +27,8 @@ formData.addEventListener("keyup", (event)=> {
             break;
     }
 })
+
+submitButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    console.log(firstName, lastName, password,email);
+})
