@@ -7,6 +7,7 @@ let emptyfieldMessages = document.querySelectorAll(".empty-field");
 
 //STORING THE VALUES INTO A VARIABLE
 let firstName, lastName, email, password;
+let fnTarget, lnTarget, emailTarget, pwdTarget;
 let field; // whee we store THE TARGET(input key)
 
 //Regular expression For validation
@@ -30,15 +31,19 @@ formData.addEventListener("keyup", (event)=> {
     switch(field) {
         case "firstName" :
             firstName = event.target.value;
+            fnTarget = event.target;
             break;
         case "lastName":
             lastName = event.target.value;
+            lnTarget = event.target;
             break;
         case "email":
             email = event.target.value;
+            emailTarget = event.target;
             break;
         case "password" :
             password = event.target.value;
+            pwdTarget = event.target;
             break;
         default:
             firstName = lastName = email = password = "";
@@ -50,39 +55,43 @@ submitButton.addEventListener("click", (event) => {
     event.preventDefault();
     console.log(firstName, lastName, email, password);
     if (firstName) {
+        emptyfieldMessages[0].classList.add("d-none");
         if (!nameRegex.test(firstName)) {
-            console.log("Name must contin only alphabets")
+            errorMessages[0].classList.remove("d-none");
         } else {
-            console.log("good to go")
+            errorMessages[1].classList.add("d-none");
         }
     } else {
-        console.log("must fill this field")
+        emptyfieldMessages[0].classList.remove("d-none");
     }
     if (lastName) {
+        emptyfieldMessages[1].classList.add("d-none");
         if (!nameRegex.test(lastName)) {
-            console.log("name must contain alphabet")
+            errorMessages[1].classList.remove("d-none");
         } else {
-            console.log("good to gio")
+            errorMessages[1].classList.add("d-none")
         }
     } else {
-        console.log("must fill this field")
+        emptyfieldMessages[1].classList.remove("d-none");
     }
     if (email) {
+        emptyfieldMessages[2].classList.add("d-none");
         if(!emailRegex.test(email)) {
-            console.log("")
+            errorMessages[2].classList.remove("d-none");
         } else {
-            console.log("");
+            errorMessages[2].classList.add("d-none");
         }
     } else {
-        console.log("");
+        emptyfieldMessages[2].classList.remove("d-none");
     }
     if (password) {
+        emptyfieldMessages[3].classList.add("d-none");
         if (!passwordRegex.test(password)) {
-            console.log("password valid")
+            errorMessages[3].classList.remove("d-none");
         } else {
-            console.log("")
+            errorMessages[3].classList.add("d-none");
         }
     } else {
-        console.log("")
+        emptyfieldMessages[3].classList.remove("d-none");
     }
 })
