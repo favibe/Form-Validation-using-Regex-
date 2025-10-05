@@ -114,6 +114,7 @@ submitButton.addEventListener("click", (event) => {
     }
 
     if (fnFlag && lnFlag && eFlag && pwdFlag) {
+        fnTarget.value = lnTarget.value = emailTarget.value = pwdTarget.value = "";
         window.location.href = "/success.html"
     }
 });
