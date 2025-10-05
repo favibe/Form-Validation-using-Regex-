@@ -57,8 +57,10 @@ submitButton.addEventListener("click", (event) => {
     if (firstName) {
         emptyfieldMessages[0].classList.add("d-none");
         if (!nameRegex.test(firstName)) {
+            fnTarget.classList.add("error");
             errorMessages[0].classList.remove("d-none");
         } else {
+            fnTarget.classList.remove("error");
             errorMessages[1].classList.add("d-none");
         }
     } else {
@@ -67,8 +69,10 @@ submitButton.addEventListener("click", (event) => {
     if (lastName) {
         emptyfieldMessages[1].classList.add("d-none");
         if (!nameRegex.test(lastName)) {
+            lnTarget.classList.add("error");
             errorMessages[1].classList.remove("d-none");
         } else {
+            lnTarget.classList.remove("error");
             errorMessages[1].classList.add("d-none")
         }
     } else {
@@ -77,8 +81,10 @@ submitButton.addEventListener("click", (event) => {
     if (email) {
         emptyfieldMessages[2].classList.add("d-none");
         if(!emailRegex.test(email)) {
+            emailTarget.classList.add("error");
             errorMessages[2].classList.remove("d-none");
         } else {
+            emailTarget.classList.remove("error");
             errorMessages[2].classList.add("d-none");
         }
     } else {
@@ -87,8 +93,10 @@ submitButton.addEventListener("click", (event) => {
     if (password) {
         emptyfieldMessages[3].classList.add("d-none");
         if (!passwordRegex.test(password)) {
+            pwdTarget.classList.add("error");
             errorMessages[3].classList.remove("d-none");
         } else {
+             pwdTarget.classList.remove("error");
             errorMessages[3].classList.add("d-none");
         }
     } else {
